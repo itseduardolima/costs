@@ -1,0 +1,25 @@
+.container {
+    width: 90vw;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    
+}
+
+.min-height {
+    min-height: 500px;
+    
+}
+
+.start {
+    justify-content: flex-start;
+    
+}
+
+.column {
+    flex-direction: column;
+    justify-content: flex-start;
+    max-width: 2%;
+}
+
