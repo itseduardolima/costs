@@ -5,11 +5,11 @@ import SubmitButton from '../form/SubmitButton'
 
 function ServiceForm({handleSubmit, btnText, projectData}) {
 
-    const [service, setServive] = useState([])
+    const [service, setServive] = useState({})
 
     function submit(e) {
         e.preventDefault()
-        projectData.service.push(service)
+        projectData.services.push(service)
         handleSubmit(projectData)
     }
 

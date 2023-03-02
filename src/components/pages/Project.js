@@ -1,4 +1,4 @@
-import {parse, v4 as uuidv4} from 'uuid'
+import { parse, v4 as uuidv4 } from 'uuid'
 import { useState, useEffect } from 'react'
 import styles from './Project.module.css'
 import { useParams } from 'react-router-dom'
@@ -6,15 +6,17 @@ import Loading from '../layout/Loading'
 import ProjectForm from '../projects/ProjectForm'
 import Message from '../layout/Message'
 import ServiceForm from '../service/ServiceForm'
+import ServiceCard from '../service/ServiceCard'
 
 function Project() {
 
-    const { id } = useParams()
+    let { id } = useParams()
     const [project, setProject] = useState([])
+    const [services, setServices] = useState([])
     const [showProjectForm, setShowProjectForm] = useState(false)
     const [showServiceForm, setShowServiceForm] = useState(false)
     const { message, setMessage } = useState()
-    const { type, setType } = useState()
+    const { type, setType } = useState('success')
 
     useEffect(() => {
 
@@ -29,15 +31,14 @@ function Project() {
                 .then((resp) => resp.json())
                 .then((data) => {
                     setProject(data)
+                    setServices(data.services)
                 })
-                .catch((err) => console.log)
+                .catch((err) => console.log(err))
         }, 1000)
 
     }, [id])
 
     function editPost(project) {
-
-
 
         if (project.budget < project.cost) {
             setMessage('O orçamento não pode ser menor que o custo do projeto!')
@@ -67,9 +68,9 @@ function Project() {
 
     function createService(project) {
 
-        setMessage('')
+      
 
-        const lastService = project.service[project.service.length -1]
+        const lastService = project.services[project.services.length - 1]
 
         lastService.id = uuidv4()
 
@@ -80,7 +81,7 @@ function Project() {
         if (newCost > parseFloat(project.budget)) {
             setMessage('Orçamento ultrapassado, verifique o valor do serviço')
             setType('error')
-            project.service.pop()
+            project.services.pop()
             return false
         }
 
@@ -93,13 +94,16 @@ function Project() {
             },
             body: JSON.stringify(project),
         })
-        .then((resp) => resp.json())
-        .then((data) => {
-            //exibir 
-        } )
-        .catch((err) => console.log(err) )
+            .then((resp) => resp.json())
+            .then((data) => {
+                setShowServiceForm(false)
+            })
+            .catch((err) => console.log(err))
     }
-    
+
+    function removeService() {
+
+    }
 
     function toggleProjectForm() {
         setShowProjectForm(!showProjectForm)
@@ -107,6 +111,7 @@ function Project() {
 
     function toggleServiceForm() {
         setShowServiceForm(!showServiceForm)
+        
     }
 
     return (
@@ -151,21 +156,35 @@ function Project() {
                             {!showServiceForm ? 'Adicionar serviço' : 'Fechar'}
                         </button>
                         <div className={styles.project_info}>
-                            {showServiceForm &&  (
-                                <ServiceForm  
-                                handleSubmit={createService}
-                                btnText="Adicionar serviço"
-                                projectData={project}
-                                 />
+                            {showServiceForm && (
+                                <ServiceForm
+                                    handleSubmit={createService}
+                                    btnText="Adicionar serviço"
+                                    projectData={project}
+                                />
                             )}
                         </div>
                     </div>
                     <h2>Serviços</h2>
                     <div className={styles.details_container} >
-                        <p>Itens de Serviços</p>
+                        {services.length > 0 &&
+                            services.map((service) => (
+                                <ServiceCard
+                                    id={service.id}
+                                    name={service.name}
+                                    cost={service.cost}
+                                    description={service.description}
+                                    key={service.id}
+                                    handleRemove={removeService}
+                                />
+                            ))
+
+
+                        }
+                        {services.length === 0 && <p>Não há serviços cadastrados</p>}
                     </div>
                 </div>
-                
+
             ) : (
                 <Loading />
             )}

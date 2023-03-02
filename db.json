@@ -2,7 +2,7 @@
   "projects": [
     {
       "name": "Projeto Almanaque",
-      "budget": "2000",
+      "budget": "20000",
       "category": {
         "id": "2",
         "name": "Desenvolvimento"
@@ -13,7 +13,7 @@
     },
     {
       "name": "Projeto Atualizado",
-      "budget": "2000",
+      "budget": "1000",
       "category": {
         "id": "2",
         "name": "Desenvolvimento"
