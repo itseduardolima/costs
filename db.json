@@ -12,17 +12,6 @@
       "id": 4
     },
     {
-      "name": "Projeto Atualizado",
-      "budget": "1000",
-      "category": {
-        "id": "2",
-        "name": "Desenvolvimento"
-      },
-      "cost": 0,
-      "services": [],
-      "id": 5
-    },
-    {
       "name": "Projeto Hydra",
       "budget": "2000",
       "category": {

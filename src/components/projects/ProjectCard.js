@@ -15,12 +15,12 @@ function ProjectCard({ id, name, budget, category, handleRemove }) {
 
         <div className={styles.container} >
             <div className={styles.project_card} >
-                <h4>{name}</h4>
+                <h4>Nome do Produto</h4>
                 <p>
-                    <span>Orçamento:</span> R${budget}
+                    <span>Orçamento:</span> R$0,00
                 </p>
                 <p className={styles.category_text} >
-                    <span className={`${styles[category.toLowerCase()]}`} ></span> {category}
+                    <span></span> Categoria
                 </p>
                 <div className={styles.project_card_actions} >
                     <Link to={`/project/${id}`}> <BsPencil /> Editar</Link>
