@@ -1,7 +1,6 @@
 .project_container{
-    padding: 2em;
-    
-
+    margin-top: 2em;
+    width: 100%;
 }
 
 .title_container {
@@ -10,3 +9,20 @@
     margin-bottom: 2em;
     
 }
+
+.card_container {
+    margin-top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+   
+}
+
+@media only screen and (max-width: 414px) {
+    .card_container {
+       display: flex;
+       justify-content: center;
+     
+    }
+}
+
+
