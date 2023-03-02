@@ -18,7 +18,7 @@ function ProjectCard() {
                     <span></span> Categoria
                 </p>
                 <div className={styles.project_card_actions} >
-                    <Link><BsPencil/> Editar</Link>
+                    <Link to="/project" ><BsPencil/> Editar</Link>
                     <button>
                         <BsFillTrashFill /> Remover
                     </button>
