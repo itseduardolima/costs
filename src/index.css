@@ -7,6 +7,6 @@
 
 
 body {
-  background-color: #efefef;
+  background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
   height: 100%;
 }

@@ -18,7 +18,7 @@
 }
 
 .project_card h4 {
-    background-color: #222;
+    background-image: linear-gradient(to left, #434343 0%, black 100%);
     color: #FFBB33;
     padding: .4em;
     margin-bottom: 1.3em;
