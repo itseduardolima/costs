@@ -1,7 +1,7 @@
 .navbar {
     display: flex;
     justify-content: space-between;
-    background-image: linear-gradient(to right, #434343 0%, black 100%);
+    background: black;
     padding: .5em;
 }
 
